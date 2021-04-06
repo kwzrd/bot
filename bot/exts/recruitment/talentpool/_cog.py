@@ -332,7 +332,7 @@ class TalentPool(WatchChannel, Cog, name="Talentpool"):
         """Mark a user's nomination as reviewed and cancel the review task."""
         if not await self.reviewer.mark_reviewed(ctx, user_id):
             return
-        await ctx.send(f"✅ The user with ID `{user_id}` was marked as reviewed.")
+        await ctx.send(f"\u2705 The user with ID `{user_id}` was marked as reviewed.")
 
     @nomination_group.command(aliases=('gr',))
     @has_any_role(*MODERATION_ROLES)
@@ -353,7 +353,7 @@ class TalentPool(WatchChannel, Cog, name="Talentpool"):
             return
 
         await self.reviewer.post_review(user_id, update_database=False)
-        await ctx.message.add_reaction("✅")
+        await ctx.message.add_reaction("\u2705")
 
     @Cog.listener()
     async def on_member_ban(self, guild: Guild, user: Union[User, Member]) -> None:
